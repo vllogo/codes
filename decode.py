@@ -10,9 +10,15 @@ def find_ternary(num):
 with open("code.txt") as file:
     code = file.read()
 
-text = ""
+new_text = ""
 for i in code:
-    text += (chr(int(((find_ternary(ord(i)))[::-1]).replace('2', '0'), 2)))
+    new_text += chr(ord(i) ^ ord('S'))
+
+text = ""
+j = 0
+for i in new_text[1:]:
+    text += (chr(int(((find_ternary(ord(i) ^ ord(new_text[j])))[::-1]).replace('2', '0'), 2)))
+    j += 1
 
 print(text)
 
